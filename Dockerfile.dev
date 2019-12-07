@@ -1,0 +1,14 @@
+# We use node to install our dependencies
+FROM node:alpine
+
+WORKDIR '/app'
+
+# Copy and install our dependencies
+COPY package.json .
+RUN npm install
+
+# Copy everything else from our porject to our 
+# working directorydirectory "/app"
+COPY . .
+
+CMD ["npm", "run", "start"]

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  web:
+    # Here it the "." asume that we have a Dockerfile inside of our working directory
+    build:
+      # It specify where do we want all the folders and files to be pulled from
+      # "." means the current working directory
+      context: .
+      # This is the location of the dockerfile file that's going to be used to construct the image for this web service
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      #Don't try to map this folder
+      - /app/node_modules
+      #Copy all directories and files from local project into /app directory
+      - .:/app
+  # Here we are going to create a 2nd service
+  # You need to take care of the indentention in this file
+  tests:
+    # Here it the "." asume that we have a Dockerfile inside of our working directory
+    build:
+      # It specify where do we want all the folders and files to be pulled from
+      # "." means the current working directory
+      context: .
+      # This is the location of the dockerfile file that's going to be used to construct the image for this web service
+      dockerfile: Dockerfile.dev
+    volumes:
+      #Don't try to map this folder
+      - /app/node_modules
+      #Copy all directories and files from local project into /app directory
+      - .:/app
+    command: ["npm", "run", "test"]
