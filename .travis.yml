@@ -1,0 +1,9 @@
+# It means that we need super level permissions
+sudo: required
+  - docker
+
+  # Steps require befure running our test or deploy our project
+  before_install:
+    # The "." means the current project directory
+    # -t means that I am taging my "image ID" with this name "juangom/docker-react"
+    - docker build -t juangom/docker-react -f Dockerfile.dev .
