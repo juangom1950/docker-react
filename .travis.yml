@@ -7,7 +7,7 @@ sudo: required
     # The "." means the current project directory
     # -t means that I am taging my "image ID" with this name "juangom/docker-react"
     # You can use any name in the tag, but it is a convention use the docker user name and the repository name
-    - docker build -t juangom/docker-react -f Dockerfile.dev .
+    - docker build -t juangom1950/docker-react -f Dockerfile.dev .
 
     # Tell Travis how to run our test suite
     # This section supose to have all the commands that need to be executed to actually run our test suite.
