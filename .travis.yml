@@ -18,3 +18,25 @@ script:
   # At the end it will report if the test succeded of failed
   #- docker run juangom1950/docker-react npm run test -- --coverage
   - docker run -e CI=true juangom1950/docker-react npm run test
+
+deploy:
+  # use this incase that you get "Missing bucket_name error"
+  # edge: true
+
+  # Hey I want to use this set of instructions to try to deploy our application
+  # Travis CI come predonfigure to deploy your applicaion to a handful of hosting providers: AWS, Digital Ocean etc
+  provider: elasticbeanstalk
+  # You can check the link that is created when you create the AWS application with elasticbeanstalk
+  region: "us-east-1"
+  app: docker-react
+  env: "DockerReact-env"
+  # This is a driver name running in AWS. It is where the docker-ci is going to put our ziped code
+  bucket_name: "elasticbeanstalk-us-east-1-185032729486"
+  # This is gong to be the same than the "app" name
+  bucket_path: "docker-react"
+  # Only deploy our application when master has a new code
+  on:
+    branch: master
+access_key_id: $AWS_ACCESS_KEY
+# I missed spelled the key in travis "SECRETE" instead of "SECRET", so I need to copy like this here
+secret_access_key: "$AWS_SECRETE_KEY"

@@ -15,6 +15,8 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+# AWS is going to check this port for incomming trafic
+EXPOSE 80
 # It says I want to copy the "build" from the "builder phase" that we just build above
 # 3rd parameter specifies the folder where we want to copy this buld folder (/usr/share/nginx/html)
 # everything inside here /usr/share/nginx/html is gong to be serve by the nginx server
