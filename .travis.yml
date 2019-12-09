@@ -21,7 +21,7 @@ script:
 
 deploy:
   # use this incase that you get "Missing bucket_name error"
-  #edge: true
+  edge: true
 
   # Hey I want to use this set of instructions to try to deploy our application
   # Travis CI come predonfigure to deploy your applicaion to a handful of hosting providers: AWS, Digital Ocean etc
