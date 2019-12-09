@@ -2,9 +2,17 @@
 sudo: required
   - docker
 
-  # Steps require befure running our test or deploy our project
+  # Steps require before running our test or deploy our project
   before_install:
     # The "." means the current project directory
     # -t means that I am taging my "image ID" with this name "juangom/docker-react"
-    # You can use any name in the tag, but it is a con vention use the docker user name and the repository name
+    # You can use any name in the tag, but it is a convention use the docker user name and the repository name
     - docker build -t juangom/docker-react -f Dockerfile.dev .
+
+    # Tell Travis how to run our test suite
+    # This section supose to have all the commands that need to be executed to actually run our test suite.
+    # Travis is going to be watchin the output of each of thesse commands and from each of these command ever gets a return status
+    # code other than zero Travis is going to assume that our test failded.
+script:
+  # At the end it will report if the test succeded of failed
+  - docker run juangom/docker-react npm run test -- --coverage
