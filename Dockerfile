@@ -8,7 +8,8 @@ RUN npm install
 # Copy all our source code directly into the container /app directory
 # We don't need to use our volume system anymore, because we don' need to reflect the changes
 # that we did in our project to the image here, like did in our development environment
-COPY . .
+# COPY . .
+COPY package*.json ./
 # The output of this is going to be our "/app/build" folder
 # It is going to build our build folder inside our /app directory.
 # This is going to be the folder that we want to copy to our "Run Phase"
