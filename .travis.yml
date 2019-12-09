@@ -15,4 +15,5 @@ sudo: required
     # code other than zero Travis is going to assume that our test failded.
 script:
   # At the end it will report if the test succeded of failed
-  - docker run juangom/docker-react npm run test -- --coverage
+  # - docker run juangom/docker-react npm run test -- --coverage
+  - docker run -e CI=true juangom/docker-react npm run test
