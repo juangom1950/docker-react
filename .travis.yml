@@ -21,7 +21,7 @@ script:
 
 deploy:
   # use this incase that you get "Missing bucket_name error"
-  edge: true
+  #edge: true
 
   # Hey I want to use this set of instructions to try to deploy our application
   # Travis CI come predonfigure to deploy your applicaion to a handful of hosting providers: AWS, Digital Ocean etc
@@ -39,4 +39,5 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   # I missed spelled the key in travis "SECRETE" instead of "SECRET", so I need to copy like this here
-  secret_access_key: "$AWS_SECRETE_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRETE_KEY"
