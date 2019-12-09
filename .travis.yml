@@ -37,6 +37,6 @@ deploy:
   # Only deploy our application when master has a new code
   on:
     branch: master
-access_key_id: $AWS_ACCESS_KEY
-# I missed spelled the key in travis "SECRETE" instead of "SECRET", so I need to copy like this here
-secret_access_key: "$AWS_SECRETE_KEY"
+  access_key_id: $AWS_ACCESS_KEY
+  # I missed spelled the key in travis "SECRETE" instead of "SECRET", so I need to copy like this here
+  secret_access_key: "$AWS_SECRETE_KEY"
