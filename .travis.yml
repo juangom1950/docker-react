@@ -28,7 +28,7 @@ deploy:
   provider: elasticbeanstalk
   # You can check the link that is created when you create the AWS application with elasticbeanstalk
   region: "us-east-1"
-  app: docker-react
+  app: "docker-react"
   env: "DockerReact-env"
   # This is a driver name running in AWS. It is where the docker-ci is going to put our ziped code
   bucket_name: "elasticbeanstalk-us-east-1-185032729486"
