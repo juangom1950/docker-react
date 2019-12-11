@@ -7,7 +7,8 @@ services:
 before_install:
   # The "." means the current project directory
   # -t means that I am taging my "image ID" with this name "juangom/docker-react"
-  # You can use any name in the tag, but it is a convention use the docker user name and the repository name
+  # You can use any name in the tag, but it is a convention use the docker user name and the name ot the repository
+  # We use Dockerfile.dev becasue we want to run a test suite. We use Dockerfile when we want to push to production environment
   - docker build -t juangom1950/docker-react -f Dockerfile.dev .
 
   # Tell Travis how to run our test suite
@@ -16,9 +17,11 @@ before_install:
   # code other than zero Travis is going to assume that our test failded.
 script:
   # At the end it will report if the test succeded of failed
+  # If we get a return result other then 0 travis assumes that we failed the test
   #- docker run juangom1950/docker-react npm run test -- --coverage
   - docker run -e CI=true juangom1950/docker-react npm run test
 
+# Tell travis how to take our application and deploy it to AWS
 deploy:
   # use this incase that you get "Missing bucket_name error"
   #edge: true
@@ -27,6 +30,7 @@ deploy:
   # Travis CI come predonfigure to deploy your applicaion to a handful of hosting providers: AWS, Digital Ocean etc
   provider: elasticbeanstalk
   # You can check the link that is created when you create the AWS application with elasticbeanstalk
+  # This region is in AWS in the link at the top
   region: "us-east-1"
   app: "docker-react"
   env: "DockerReact-env"

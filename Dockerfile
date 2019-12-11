@@ -15,8 +15,9 @@ COPY . .
 # This is going to be the folder that we want to copy to our "Run Phase"
 RUN npm run build
 
+# nginx is a light server used for production deployment
 FROM nginx
-# AWS is going to check this port for incomming trafic
+# In AWS Elastic BeanStack is going to check this port for incomming trafic
 EXPOSE 80
 # It says I want to copy the "build" from the "builder phase" that we just build above
 # 3rd parameter specifies the folder where we want to copy this buld folder (/usr/share/nginx/html)
